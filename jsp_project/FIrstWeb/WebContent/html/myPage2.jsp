@@ -1,6 +1,7 @@
 <%@page import="member.LoginInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html>
@@ -23,45 +24,23 @@
 </head>
 <body>
 
-	<%
-		// 로그인 유무 확인 -> session 속성에 loginInfo 확인
-	
-		LoginInfo info = (LoginInfo) session.getAttribute("loginInfo");
-	
-		if(info==null){
-	%>
+	<c:if test="${loginInfo==null}">	
 		<script>
 			alert('로그인이 필요한 서비스 입니다.');
-			location.href = 'login.html';
-		
-		</script>
+			location.href = 'login.html';		
+		</script>	
+	</c:if>
 	
-	<%	} else {%>
-	
+	<c:if test="${loginInfo!=null}">	
 		<h1> 회원 정보</h1>
 		<h3>
-			이름 : <%= info.getName()%> / ${loginInfo.name} <br>
-			아이디 : <%= info.getId()%> / ${loginInfo.id} <br>
-			성별 :  <%= info.getGender()%> / ${loginInfo.gender} <br>
-			태어난 년도 :  <%= info.getByear()%> ${loginInfo.byear} <br>
+			이름 :  ${loginInfo.name} <br>
+			아이디 :  ${loginInfo.id} <br>
+			성별 :  ${loginInfo.gender} <br>
+			태어난 년도 :  ${loginInfo.byear} <br>
 		</h3>
 		<a href="logout.jsp">로그아웃</a>
-	
-	<%	} %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	</c:if>
 
 
 

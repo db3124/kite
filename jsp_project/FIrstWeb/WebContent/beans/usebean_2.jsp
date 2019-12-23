@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Insert title here</title>
 <!--CDN 방식으로 jQuery 라이브러리를 로드-->
         <script
@@ -22,20 +21,39 @@
 </head>
 <body>
 
-	<h1>view c </h1>
+	<jsp:useBean id="member" class="member.MemberInfo" scope="request" />
+	<!-- 
+		MemberInfo member = (Memberinfo)request.getAttribute("member");
 	
-	<h1> 결과 : ${result}</h1>
-	
-	
-	
-	
-	
-	
-	
-	
+		MemberInfo member = new MemberInfo();
+		request.setAttribute("member", member) ;
+	-->
+		
+	<%= member.getByear() %> : <%= member.getUname() %>
 	
 	
+	<br>
+	
+	<jsp:useBean id="loginInfo" class="member.LoginInfo" scope="session" />
 	
 	
+	<%= loginInfo %>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
