@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.EditFormMemberService;
+import service.EditMemberServiceImpl;
 import service.IndexMemberServiceImpl;
+import service.LIstMemberServiceImpl;
 import service.MemberService;
 import service.RegFormMemberServiceImpl;
 import service.RegMemberServiceImpl;
@@ -32,6 +35,13 @@ public class FrontController extends HttpServlet {
 		// /member/regForm
 		uriMap.put("/member/regForm", new RegFormMemberServiceImpl());
 		uriMap.put("/member/reg", new RegMemberServiceImpl());
+		
+		// 회원 리스트
+		uriMap.put("/member/list", new LIstMemberServiceImpl());
+				
+		// 회원 정보 수정
+		uriMap.put("/member/editForm", new EditFormMemberService());
+		uriMap.put("/member/edit", new EditMemberServiceImpl());
 		
 		
 		// 기능 확장 : Service 구현 클래스 생성 , view(JSP) 생성
